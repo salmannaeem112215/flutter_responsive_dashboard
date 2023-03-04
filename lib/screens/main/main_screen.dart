@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../dashboard/dashboard_screen.dart';
 import './compoenents/slide_menu.dart';
 
 class MainScreen extends StatelessWidget {
@@ -9,13 +10,14 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Expanded(
             child: SlideMenu(),
           ),
-          Expanded(
+          const Expanded(
             flex: 5,
-            child: Container(),
+            child: DashboardScreen(),
           ),
         ],
       ),
