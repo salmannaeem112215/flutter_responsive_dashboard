@@ -11,6 +11,7 @@ class MyFiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,15 +34,20 @@ class MyFiles extends StatelessWidget {
           ],
         ),
         const SizedBox(height: defaultPadding),
+        const SizedBox(height: defaultPadding),
         GridView.builder(
           shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             crossAxisSpacing: defaultPadding,
           ),
-          itemBuilder: (context, index) => Container(
-            color: secondaryColor,
-          ),
+          itemCount: 4,
+          itemBuilder: (context, index) {
+            print(4);
+            return Container(
+              color: Colors.blue,
+            );
+          },
         ),
       ],
     );
