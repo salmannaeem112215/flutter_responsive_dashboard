@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_dashboard/responsive.dart';
 
 import '../dashboard/dashboard_screen.dart';
 import './compoenents/slide_menu.dart';
@@ -12,9 +13,10 @@ class MainScreen extends StatelessWidget {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Expanded(
-            child: SlideMenu(),
-          ),
+          if (Responsive.isDesktop(context))
+            const Expanded(
+              child: SlideMenu(),
+            ),
           const Expanded(
             flex: 5,
             child: DashboardScreen(),
@@ -24,4 +26,3 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
-

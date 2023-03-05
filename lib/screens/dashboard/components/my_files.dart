@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_dashboard/responsive.dart';
 
-import '../../../models/my_file.dart';
 import '../../../constants.dart';
-import './file_info_card.dart';
+import 'file_info_card_view.dart';
 
 class MyFiles extends StatelessWidget {
   const MyFiles({
@@ -11,6 +11,7 @@ class MyFiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -24,9 +25,11 @@ class MyFiles extends StatelessWidget {
             ),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: defaultPadding * 1.5,
-                  vertical: defaultPadding,
+                  vertical: (Responsive.isMobile(context))
+                      ? defaultPadding / 2
+                      : defaultPadding / 1,
                 ),
               ),
               icon: const Icon(Icons.add),
@@ -36,18 +39,19 @@ class MyFiles extends StatelessWidget {
           ],
         ),
         const SizedBox(height: defaultPadding),
-        GridView.builder(
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: defaultPadding,
-            childAspectRatio: 4 / 3,
-          ),
-          itemCount: 4,
-          itemBuilder: (context, index) => FileInfoCard(
-            info: demoMyFiles[index],
-          ),
-        ),
+        Responsive(
+            mobile: FileInfoCardView(
+              crossAxisCount: (size.width > 650) ? 4 : 2,
+              childAspectRatio: (size.width > 700) ? 1.3 : 1,
+            ),
+            tablet: FileInfoCardView(
+              crossAxisCount: (size.width > 950) ? 4 : 2,
+              childAspectRatio: (size.width > 950) ? 1 : 0.9,
+            ),
+            desktop: FileInfoCardView(
+              crossAxisCount: 4,
+              childAspectRatio: (size.width > 1400) ? 1.3 : 1,
+            ))
       ],
     );
   }
