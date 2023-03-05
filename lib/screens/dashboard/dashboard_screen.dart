@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_dashboard/models/recent_file.dart';
-import 'package:flutter_responsive_dashboard/responsive.dart';
 
+import '../../responsive.dart';
 import '../../constants.dart';
 import './components/header.dart';
 import './components/storage_details.dart';
