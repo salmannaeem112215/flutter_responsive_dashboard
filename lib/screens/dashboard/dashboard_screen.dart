@@ -27,7 +27,7 @@ class DashboardScreen extends StatelessWidget {
               SizedBox(width: defaultPadding),
               Expanded(flex: 2, child: StorageDetails())
             ],
-          )
+          ),
         ],
       ),
     ));
