@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_dashboard/models/recent_file.dart';
 
 import '../../constants.dart';
 import './components/header.dart';
 import './components/storage_details.dart';
 import './components/my_files.dart';
+import 'components/recent_files.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -19,13 +21,18 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: defaultPadding),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Expanded(
                 flex: 5,
-                child: MyFiles(),
+                child: Column(
+                  children: const [
+                    MyFiles(),
+                    RecentFiles(),
+                  ],
+                ),
               ),
-              SizedBox(width: defaultPadding),
-              Expanded(flex: 2, child: StorageDetails())
+              const SizedBox(width: defaultPadding),
+              const Expanded(flex: 2, child: StorageDetails())
             ],
           ),
         ],

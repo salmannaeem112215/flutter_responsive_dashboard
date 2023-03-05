@@ -41,6 +41,7 @@ class MyFiles extends StatelessWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             crossAxisSpacing: defaultPadding,
+            childAspectRatio: 4 / 3,
           ),
           itemCount: 4,
           itemBuilder: (context, index) => FileInfoCard(
