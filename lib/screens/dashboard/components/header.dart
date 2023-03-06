@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_dashboard/controllers/custom_menu_controller.dart';
 import 'package:flutter_responsive_dashboard/responsive.dart';
+import 'package:provider/provider.dart';
 
 import './search_field.dart';
 import './profhile_card.dart';
@@ -14,7 +16,9 @@ class Header extends StatelessWidget {
     return Row(
       children: [
         if (!Responsive.isDesktop(context))
-          IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+          IconButton(
+              onPressed: context.read<CustomMenuController>().controlMenu,
+              icon: const Icon(Icons.menu)),
         if (!Responsive.isMobile(context))
           Text(
             'Dashboard',
